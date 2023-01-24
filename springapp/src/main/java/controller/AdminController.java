@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dao.IDonor;
@@ -17,7 +18,7 @@ import model.Donor;
 import model.Sample;
 
 @RestController
-//@RequestMapping("")
+@RequestMapping("admin")
 public class AdminController { 
 
 	@Autowired
@@ -30,28 +31,28 @@ public class AdminController {
 	// 	return "welcome to Blood Bank Application";
 	// }
 	
-	@GetMapping("/admin/donor")
+	@GetMapping("/donor")
 	public List<Donor> getAllDonor(){
 		return donor.findAll();
 	}
 
-	@GetMapping("/admin/sample")
+	@GetMapping("/sample")
 	public List<Sample> getAllSample(){
 		return sample.findAll();
 	}
 	
-	@PostMapping("/admin/addSample")
+	@PostMapping("/addSample")
 	public String addSample(@RequestBody Sample s) {
 		sample.save(s);
 		return "Sample added";		
 	}
-	@DeleteMapping("/admin/sample/{sid}")
+	@DeleteMapping("/sample/{sid}")
 	public String deleteMovie(@PathVariable("sid") int sid) {
 		sample.deleteById(sid);
 		return "Sample deleted";
 	}
 	
-	@PutMapping("/admin/sample/{sid}")
+	@PutMapping("/sample/{sid}")
 	public String updateSample(@RequestBody Sample s) {
 		sample.findById(s.getBloodBankID()).map( update ->{
 			update.setBloodBankID(s.getBloodBankID());
@@ -64,21 +65,21 @@ public class AdminController {
 		return "Sample Updated";
 	}
 	
-	@PutMapping("/admin/donor/{id}")
+	@PutMapping("/donor/{id}")
 	public String updateDonor(@RequestBody Donor d) {
 		donor.findById(d.getId()).map( update ->{
 			update.setId(d.getId());
 			update.setDonorEmail(d.getDonorEmail());
 			update.setBloodGroup(d.getBloodGroup());
 			update.setBloodPressure(d.getBloodPressure());
-			update.setPHLevel(d.getPHLevel());
+			update.setPhLevel(d.getPhLevel());
 			update.setActive(d.isActive());
 			return donor.save(update);
 		});
 		return "Donor Updated";
 	}
 	
-	@DeleteMapping("/admin/donor/{id}")
+	@DeleteMapping("/donor/{id}")
 	public String deleteDonor(@PathVariable("id") int id) {
 		donor.deleteById(id);
 		return "Donor Removed";

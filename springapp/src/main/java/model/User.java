@@ -12,6 +12,7 @@ public class User {
 	private String mobileNumber;
 	private boolean active;
 	private String role;
+	
 	public String getEmail() {
 		return email;
 	}

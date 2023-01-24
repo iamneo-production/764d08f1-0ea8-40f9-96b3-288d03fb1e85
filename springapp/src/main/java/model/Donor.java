@@ -9,7 +9,7 @@ public class Donor {
 	@Id
 	private Integer id;
 	private String donorEmail;
-	private String PHLevel;
+	private String phLevel;
 	private String bloodPressure;
 	private boolean active;
 	private String bloodGroup;
@@ -32,12 +32,6 @@ public class Donor {
 	public void setBloodGroup(String bloodGroup) {
 		this.bloodGroup = bloodGroup;
 	}
-	public String getPHLevel() {
-		return PHLevel;
-	}
-	public void setPHLevel(String pHLevel) {
-		PHLevel = pHLevel;
-	}
 	public String getBloodPressure() {
 		return bloodPressure;
 	}
@@ -50,7 +44,10 @@ public class Donor {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
-	
-	
+	public String getPhLevel() {
+		return phLevel;
+	}
+	public void setPhLevel(String phLevel) {
+		this.phLevel = phLevel;
+	}
 }

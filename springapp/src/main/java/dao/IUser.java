@@ -7,10 +7,10 @@ import model.User;
 
 public interface IUser extends JpaRepository<User,Integer>{
 
-	 @Query(value = "SELECT uname FROM user WHERE uname=?", nativeQuery = true)
-	  public User findByUname(String uname);
+	 @Query(value = "SELECT*FROM user WHERE email=?", nativeQuery = true)
+	  public User findByEmail(String email);
 
-	 @Query(value = "SELECT upassword FROM user WHERE upassword=?", nativeQuery = true)
-	  public User findByUpassword(String upassword);
+	 @Query(value = "SELECT*FROM user WHERE password=?", nativeQuery = true)
+	  public User findByPassword(String password);
 	
 }
