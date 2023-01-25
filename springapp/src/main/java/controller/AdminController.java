@@ -26,11 +26,6 @@ public class AdminController {
 	@Autowired
 	ISample sample;
 	
-	// @GetMapping("/") 
-	// public String welcome() {
-	// 	return "welcome to Blood Bank Application";
-	// }
-	
 	@GetMapping("/donor")
 	public List<Donor> getAllDonor(){
 		return donor.findAll();

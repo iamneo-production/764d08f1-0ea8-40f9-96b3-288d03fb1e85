@@ -56,15 +56,14 @@ public class UserController {
 		return sample.findAll();
 	}
 	
-	@GetMapping("/donor/{group}")
-	public Donor getAllDonorByGroup(@PathVariable("group") String group) {
-		Donor g=donor.findByDonorGroup(group);
-		return g;
-	}
-
-	@GetMapping("/sample/{group}")
-	public Sample getAllSampleByGroup(@PathVariable("group") String group) {
-		Sample s=sample.findBySampleGroup(group);
-		return s;
-	}
+	@GetMapping("/donor/{did}")
+	public Donor getAllDonorById(@PathVariable("did") int did) {	
+		Donor s1;
+		s1=donor.findDonorByID(did);
+		return s1;
+	}	
+	@GetMapping("/sample/{sid}")
+	public String getAllSampleById(@PathVariable("sid") int sid) {	
+		return sample.findById(sid).get().getBloodGroup();
+	} 
 }
