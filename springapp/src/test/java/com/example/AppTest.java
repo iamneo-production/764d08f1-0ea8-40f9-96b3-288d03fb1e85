@@ -17,13 +17,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AppTest {
+class AppTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test //getsAllDonor
-    public void test_case1() throws Exception {
+    void test_case1() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/donor")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -31,7 +31,7 @@ public class AppTest {
     }
 
     @Test //getsSingleDonor
-    public void test_case2() throws Exception {
+    void test_case2() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/donor/1")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -39,14 +39,14 @@ public class AppTest {
     }
     
    @Test //delete Donor
-    public void test_case3() throws Exception {
+    void test_case3() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/admin/sample/1"))
                 .andExpect(status().isOk())
                 .andReturn();
     }
 
     @Test //returnsNotFoundForInvalidSingleDonor
-    public void test_case4() throws Exception {
+    void test_case4() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/donor/100")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
